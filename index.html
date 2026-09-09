@@ -87,15 +87,28 @@
   .hero-grid{
     display:grid;
     grid-template-columns:1.2fr 0.8fr;
-    gap:56px;
+    grid-template-areas:
+      "pill   photo"
+      "name   photo"
+      "role   photo"
+      "sub    photo"
+      "social photo"
+      "value  photo"
+      "ctas   photo";
+    column-gap:56px;
+    row-gap:0;
     align-items:center;
   }
+  .hero .pill{grid-area:pill; align-self:start;}
+  .hero-photo-slot{grid-area:photo; align-self:center;}
   .hero-name{
+    grid-area:name;
     margin-top:22px;
     font-size:clamp(2.6rem, 5vw, 4.1rem);
     line-height:1.03;
   }
   .hero-sub{
+    grid-area:sub;
     margin-top:8px;
     max-width:520px;
     color:var(--ink-soft);
@@ -103,6 +116,7 @@
     line-height:1.65;
   }
   .hero-role{
+    grid-area:role;
     margin-top:14px;
     font-family:'Sora',sans-serif;
     font-weight:700;
@@ -110,6 +124,7 @@
     color:var(--ink);
   }
   .value-row{
+    grid-area:value;
     margin-top:26px;
     display:flex;
     gap:28px;
@@ -124,7 +139,7 @@
     font-size:14px;
   }
   .value-item .dot{background:var(--ink);}
-  .hero-ctas{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-ctas{grid-area:ctas; margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
   .hero-photo{
     position:relative;
     width:100%;
@@ -133,7 +148,10 @@
     aspect-ratio:1/1;
     border-radius:50%;
     overflow:hidden;
-    border:6px solid var(--pink);
+    box-shadow:
+      0 0 0 6px var(--bg),
+      0 0 0 8px var(--pink),
+      0 24px 44px -16px rgba(230,67,124,0.45);
   }
   .hero-photo img{width:100%; height:100%; object-fit:cover;}
 
@@ -169,15 +187,55 @@
   }
 
   /* ---------- BIO ---------- */
-  .bio{padding-top:0; padding-bottom:64px;}
-  .bio-copy{max-width:960px;}
-  .bio-copy p{
-    font-size:16.5px;
-    line-height:1.75;
-    color:var(--ink-soft);
-    margin-bottom:20px;
+  .bio{padding-top:64px; padding-bottom:64px;}
+  .timeline{position:relative; max-width:720px;}
+  .timeline-item{position:relative; padding-left:36px; padding-bottom:36px;}
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-item::before{
+    content:'';
+    position:absolute;
+    left:5px;
+    top:18px;
+    bottom:-36px;
+    width:2px;
+    background:var(--pink-tint);
   }
-  .bio-copy p:last-child{margin-bottom:0; color:var(--ink); font-weight:500;}
+  .timeline-item:last-child::before{display:none;}
+  .timeline-dot{
+    position:absolute;
+    left:0;
+    top:5px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--pink);
+  }
+  .timeline-dot-current{
+    width:16px;
+    height:16px;
+    left:-2px;
+    top:3px;
+    box-shadow:0 0 0 5px var(--pink-tint);
+  }
+  .timeline-label{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--pink-deep);
+    margin-bottom:6px;
+  }
+  .timeline-text{
+    font-size:15.5px;
+    line-height:1.7;
+    color:var(--ink-soft);
+  }
+  .timeline-item-current .timeline-content{
+    background:var(--pink-tint);
+    border-radius:16px;
+    padding:20px 24px;
+    margin-top:4px;
+  }
+  .timeline-item-current .timeline-text{color:var(--ink); font-weight:500;}
 
   /* ---------- IMPACT ---------- */
   .impact{padding:64px 0;}
@@ -249,15 +307,19 @@
     margin-top:40px;
     padding-top:32px;
     display:flex;
-    align-items:center;
+    flex-direction:column;
     gap:16px;
-    flex-wrap:wrap;
   }
   .exp-more-label{
     font-family:'Sora',sans-serif;
     font-weight:700;
     font-size:15px;
     color:var(--pink);
+  }
+  .exp-more-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
   }
 
   /* ---------- INITIATIVES ---------- */
@@ -335,19 +397,13 @@
     transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
   .social-icon-btn:hover{background:var(--pink); color:var(--white); border-color:var(--pink);}
-  .hero-socials{margin-top:14px; margin-bottom:6px; display:flex; gap:10px; justify-content:flex-start;}
+  .hero-socials{grid-area:social; margin-top:14px; margin-bottom:6px; display:flex; gap:10px; justify-content:flex-start;}
   .hero-socials .social-icon-btn{
     border:none;
     background:var(--pink-tint);
     color:var(--pink-deep);
   }
   .hero-socials .social-icon-btn:hover{background:var(--pink); color:var(--white);}
-  .exp-more .social-icon-btn{
-    border:none;
-    background:var(--pink-tint);
-    color:var(--pink-deep);
-  }
-  .exp-more .social-icon-btn:hover{background:var(--pink); color:var(--white);}
   .footer-bottom{
     margin-top:56px;
     border-top:1px solid rgba(255,253,249,0.16);
@@ -362,9 +418,23 @@
 
   @media (max-width:760px){
     .wrap{padding:0 20px;}
-    .hero{padding:56px 0 0;}
-    .hero-grid{grid-template-columns:1fr; gap:32px;}
-    .hero-photo{max-width:180px; margin:0;}
+    .hero{padding:56px 0 44px;}
+    .hero-grid{
+      grid-template-columns:1fr;
+      grid-template-areas:
+        "pill"
+        "photo"
+        "name"
+        "role"
+        "sub"
+        "social"
+        "value"
+        "ctas";
+      row-gap:0;
+    }
+    .hero-photo-slot{margin:26px 0 4px;}
+    .hero-photo{max-width:132px; margin:0; box-shadow:0 0 0 4px var(--bg), 0 0 0 6px var(--pink), 0 14px 28px -12px rgba(230,67,124,0.45);}
+    .hero-name{margin-top:16px;}
     .impact-grid{grid-template-columns:1fr 1fr; gap:14px;}
     .section{padding:52px 0;}
     .exp-item{grid-template-columns:1fr; gap:10px;}
@@ -373,6 +443,7 @@
     .meta-grid{grid-template-columns:1fr; gap:26px;}
     .compare-row{grid-template-columns:1.2fr 1fr 1fr;}
     .compare-cell{padding:14px 12px; font-size:13px;}
+    .timeline-item-current .timeline-content{padding:16px 18px;}
     .footer{padding:52px 0 0;}
   }
 </style>
@@ -382,33 +453,31 @@
 <!-- HERO -->
 <header class="hero">
   <div class="wrap hero-grid">
-    <div>
-      <span class="pill"><span class="dot"></span>15+ años generando revenue medible</span>
-      <h1 class="hero-name">Mario Quirós R.</h1>
-      <p class="hero-role">Head of Marketing | Fractional CMO</p>
-      <p class="hero-sub">Te ayudo a conectar marca, estrategia y performance con IA aplicada para construir sistemas de crecimiento.</p>
-      <div class="hero-socials">
-        <a class="social-icon-btn" href="https://www.linkedin.com/in/marioquirosr/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="22" height="22" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="7.3" r="1.5" fill="currentColor"/><rect x="5.7" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="7.8" height="2.3" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="16.5" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/></svg>
-        </a>
-        <a class="social-icon-btn" href="https://www.instagram.com/mario_quiros/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1.3" fill="currentColor"/></svg>
-        </a>
-      </div>
-      <div class="value-row">
-        <span class="value-item"><span class="dot"></span>Reduzco CAC</span>
-        <span class="value-item"><span class="dot"></span>Aumento LTV</span>
-        <span class="value-item"><span class="dot"></span>No Vanity Metrics</span>
-      </div>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://wa.me/50762440096?text=Hola%20Mario%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20conversar." target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
-        <a class="btn btn-outline" href="Mario-Quiros-CV.pdf" download>Descargar CV</a>
-      </div>
-    </div>
-    <div>
+    <span class="pill"><span class="dot"></span>15+ años generando revenue medible</span>
+    <div class="hero-photo-slot">
       <div class="hero-photo">
         <img id="hero-photo-img" src="" alt="Retrato de Mario Quirós R.">
       </div>
+    </div>
+    <h1 class="hero-name">Mario Quirós R.</h1>
+    <p class="hero-role">Head of Marketing | Fractional CMO</p>
+    <p class="hero-sub">Te ayudo a conectar marca, estrategia y performance con IA aplicada para construir sistemas de crecimiento.</p>
+    <div class="hero-socials">
+      <a class="social-icon-btn" href="https://www.linkedin.com/in/marioquirosr/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="22" height="22" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="7.3" r="1.5" fill="currentColor"/><rect x="5.7" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="7.8" height="2.3" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="16.5" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/></svg>
+      </a>
+      <a class="social-icon-btn" href="https://www.instagram.com/mario_quiros/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1.3" fill="currentColor"/></svg>
+      </a>
+    </div>
+    <div class="value-row">
+      <span class="value-item"><span class="dot"></span>Reduzco CAC</span>
+      <span class="value-item"><span class="dot"></span>Aumento LTV</span>
+      <span class="value-item"><span class="dot"></span>No Vanity Metrics</span>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://wa.me/50762440096?text=Hola%20Mario%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20conversar." target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+      <a class="btn btn-outline" href="Mario-Quiros-CV.pdf" download>Descargar CV</a>
     </div>
   </div>
 </header>
@@ -424,13 +493,52 @@
 <!-- BIO -->
 <section class="section bio">
   <div class="wrap">
-    <div class="bio-copy">
-      <p>Empecé en agencia manejando redes de marcas de Cervecería Nacional, entre otras, y crecí hasta Director de Creatividad y Estrategia liderando equipos multidisciplinarios para más de 15 marcas — New Balance, Panasonic, Credicorp, Súper 99, etc.</p>
-      <p>De ahí crucé al lado cliente como Gerente de Marketing Digital en una de las telcos más relevantes de Panamá, +Móvil, donde lideré la estrategia digital y de contenido para la transición de marca durante la adquisición de Claro.</p>
-      <p>En paralelo cofundé una agencia boutique especializada en marcas gastronómicas.</p>
-      <p>Después lideré la operación regional de content y social commerce para Samsung en 7 mercados de LATAM, pivotando de awareness a social-commerce: +USD 600K en ventas atribuidas.</p>
-      <p>Construí el área de Marketing desde cero en una fintech regulada, con responsabilidad sobre el P&amp;L y asiento en la Junta Directiva. A través del posicionamiento de marca, la educación sobre el producto y estrategias de co-marketing con comercios afiliados, logré optimizar el CAC e incrementar el LTV mediante el impulso del uso y la adopción.</p>
-      <p>Hoy desarrollo Brand to Revenue, metodología que conecta marca con ingresos medibles — validada con un caso real: +100% en precio de venta.</p>
+    <div class="section-head">
+      <h2 class="section-title">Mi trayectoria</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <div class="timeline-label">Agencias</div>
+          <p class="timeline-text">Empecé manejando redes sociales y crecí a Director de Social Media. Di el salto a otra agencia para estructurar la operación y los procesos, y escalé a Director de Creatividad y Estrategia — liderando equipos multidisciplinarios y aportando la creatividad y estrategia que cerraban nuevos negocios.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <div class="timeline-label">+Móvil</div>
+          <p class="timeline-text">De ahí crucé al lado cliente como Gerente de Marketing Digital en una de las telcos más relevantes de Panamá, +Móvil, donde lideré la estrategia digital y de contenido para la transición de marca durante la adquisición de Claro.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <div class="timeline-label">The Social Dudes</div>
+          <p class="timeline-text">Cofundé The Social Dudes, una agencia boutique de marcas gastronómicas, con un portafolio de talento independiente categorizado por especialidad, calidad y costo — así escalé capacidad sin subir costos fijos. La llevé de cero a rentabilidad sostenida, con más de 12 clientes activos simultáneos en menos de 2 años.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <div class="timeline-label">Samsung</div>
+          <p class="timeline-text">Después lideré la operación regional de content y social commerce para Samsung en 7 mercados de LATAM, pivotando de awareness a social-commerce: +USD 600K en ventas atribuidas.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <div class="timeline-label">Fintech</div>
+          <p class="timeline-text">Construí el área de Marketing desde cero en una fintech regulada, con responsabilidad sobre el P&amp;L y asiento en la Junta Directiva. A través del posicionamiento de marca, la educación sobre el producto y estrategias de co-marketing con comercios afiliados, logré optimizar el CAC e incrementar el LTV mediante el impulso del uso y la adopción.</p>
+        </div>
+      </div>
+      <div class="timeline-item timeline-item-current">
+        <span class="timeline-dot timeline-dot-current"></span>
+        <div class="timeline-content">
+          <div class="timeline-label">Hoy: Brand to Revenue</div>
+          <p class="timeline-text">Hoy desarrollo Brand to Revenue, metodología que conecta marca con ingresos medibles — validada con un caso real: +100% en precio de venta.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -563,10 +671,13 @@
     </div>
     <div class="exp-more">
       <span class="exp-more-label">Para ver mi experiencia completa:</span>
-      <a class="social-icon-btn" href="https://www.linkedin.com/in/marioquirosr/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="22" height="22" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="7.3" r="1.5" fill="currentColor"/><rect x="5.7" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="7.8" height="2.3" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="16.5" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/></svg>
-      </a>
-      <a class="btn btn-outline" href="Mario-Quiros-CV.pdf" download>Descargar CV</a>
+      <div class="exp-more-actions">
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/marioquirosr/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="22" height="22" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="7" cy="7.3" r="1.5" fill="currentColor"/><rect x="5.7" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="7.8" height="2.3" rx="0.5" fill="currentColor"/><rect x="11.3" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/><rect x="16.5" y="10.3" width="2.6" height="7.6" rx="0.5" fill="currentColor"/></svg>
+          Ver en LinkedIn
+        </a>
+        <a class="btn btn-outline" href="Mario-Quiros-CV.pdf" download>Descargar CV</a>
+      </div>
     </div>
   </div>
 </section>
