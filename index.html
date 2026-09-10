@@ -110,7 +110,22 @@
   .btn-outline-light:hover{background:var(--bg); color:var(--ink);}
 
   /* ---------- HERO ---------- */
-  .hero{padding:88px 0 56px;}
+  .hero{
+    padding:88px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:radial-gradient(rgba(230,67,124,0.18) 1.4px, transparent 1.4px);
+    background-size:26px 26px;
+    -webkit-mask-image:radial-gradient(ellipse 60% 70% at 72% 40%, #000 45%, transparent 100%);
+    mask-image:radial-gradient(ellipse 60% 70% at 72% 40%, #000 45%, transparent 100%);
+    pointer-events:none;
+  }
+  .hero .hero-grid{position:relative; z-index:1;}
   .hero-grid{
     display:grid;
     grid-template-columns:1.2fr 0.8fr;
@@ -478,6 +493,10 @@
     .hero-photo-slot{margin:26px 0 4px;}
     .hero-photo{max-width:132px; margin:0; box-shadow:0 0 0 4px var(--bg), 0 0 0 6px var(--pink), 0 14px 28px -12px rgba(230,67,124,0.45);}
     .hero-name{margin-top:16px;}
+    .hero::before{
+      -webkit-mask-image:radial-gradient(ellipse 90% 55% at 25% 15%, #000 45%, transparent 100%);
+      mask-image:radial-gradient(ellipse 90% 55% at 25% 15%, #000 45%, transparent 100%);
+    }
     .impact-grid{grid-template-columns:1fr 1fr; gap:14px;}
     .section{padding:52px 0;}
     .exp-item{grid-template-columns:1fr; gap:10px;}
