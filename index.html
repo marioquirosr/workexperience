@@ -377,11 +377,22 @@
   .exp-preview-item:last-child{border-bottom:1px solid var(--line);}
   .exp-detail-trigger{margin-top:28px;}
 
+  /* ---------- EXPERIENCE SECTION (dark) ---------- */
+  .experience-dark{background:var(--ink);}
+  .experience-dark .section-title{color:var(--bg);}
+  .experience-dark .exp-preview-item{border-top-color:rgba(255,253,249,0.14);}
+  .experience-dark .exp-preview-item:last-child{border-bottom-color:rgba(255,253,249,0.14);}
+  .experience-dark .exp-company{color:var(--bg);}
+  .experience-dark .exp-dates{color:rgba(255,253,249,0.55);}
+  .experience-dark .exp-role{color:var(--bg);}
+  .experience-dark .btn-outline{border-color:rgba(255,253,249,0.4); color:var(--bg); background:transparent;}
+  .experience-dark .btn-outline:hover{background:var(--bg); color:var(--ink);}
+
   /* ---------- EXPERIENCE MODAL ---------- */
   .modal-overlay{
     position:fixed;
     inset:0;
-    background:rgba(21,21,21,0.6);
+    background:rgba(10,10,10,0.35);
     display:none;
     align-items:flex-start;
     justify-content:center;
@@ -391,7 +402,11 @@
   }
   .modal-overlay.open{display:flex;}
   .modal-panel{
-    background:var(--ink);
+    background:rgba(12,12,12,0.72);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    border:1px solid rgba(255,253,249,0.1);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
     border-radius:24px;
     max-width:780px;
     width:100%;
@@ -738,45 +753,8 @@
   </div>
 </section>
 
-<!-- COMPARISON -->
-<section class="section compare">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 class="section-title">Marketing de vanidad vs. Brand to Revenue</h2>
-      <p class="compare-sub">La diferencia entre invertir en marca para verse bien, e invertir en marca para vender más.</p>
-    </div>
-    <div class="compare-table">
-      <div class="compare-row head">
-        <div class="compare-cell label"> </div>
-        <div class="compare-cell">Marketing tradicional</div>
-        <div class="compare-cell">Brand to Revenue</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Métrica principal</div>
-        <div class="compare-cell no">Alcance, likes</div>
-        <div class="compare-cell yes">CAC y LTV</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Marca vista como</div>
-        <div class="compare-cell no">Gasto</div>
-        <div class="compare-cell yes">Motor de ingresos</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Reporta a</div>
-        <div class="compare-cell no">Percepción</div>
-        <div class="compare-cell yes">Revenue</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Se instala vía</div>
-        <div class="compare-cell no">Agencia externa</div>
-        <div class="compare-cell yes">Consultoría y talleres in-house</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- EXPERIENCE -->
-<section class="section" id="experiencia">
+<section class="section experience-dark" id="experiencia">
   <div class="wrap">
     <div class="section-head">
       <h2 class="section-title">Experiencia profesional</h2>
@@ -888,7 +866,7 @@
 </div>
 
 <!-- INITIATIVES -->
-<section class="section" id="metodologia" style="padding-top:0;">
+<section class="section" id="metodologia">
   <div class="wrap">
     <div class="section-head">
       <h2 class="section-title">Metodología y firma propia</h2>
