@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mario Quirós R. — Marketing que se convierte en ingresos</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiNGREVBMDQiLz4KICA8Y2lyY2xlIGN4PSIyMyIgY3k9IjI3IiByPSI0LjIiIGZpbGw9IiMwQTBEMTUiLz4KICA8Y2lyY2xlIGN4PSI0MSIgY3k9IjI3IiByPSI0LjIiIGZpbGw9IiMwQTBEMTUiLz4KICA8cGF0aCBkPSJNMTkgMzcgUTMyIDUwIDQ1IDM3IiBzdHJva2U9IiMwQTBEMTUiIHN0cm9rZS13aWR0aD0iNS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KPC9zdmc+Cg==">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiM3RjAwRkYiLz4KICA8Y2lyY2xlIGN4PSIyMyIgY3k9IjI3IiByPSI0LjIiIGZpbGw9IiNGRkZGRkYiLz4KICA8Y2lyY2xlIGN4PSI0MSIgY3k9IjI3IiByPSI0LjIiIGZpbGw9IiNGRkZGRkYiLz4KICA8cGF0aCBkPSJNMTkgMzcgUTMyIDUwIDQ1IDM3IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iNS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KPC9zdmc+Cg==">
 <meta name="description" content="Mario Quirós R. — 15+ años liderando marketing en tecnología, consumo masivo y fintech. Creador de Brand to Revenue e Intervento. Mentor de startups en Ciudad del Saber.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,13 +12,14 @@
 <style>
   :root{
     --bg:#faf8f5;
-    --lime:#FDEA04;
+    --lime:#7F00FF;
+    --accent-soft:#A970FF;
     --hero-bg:#1c1c1e;
     --ink:#0A0D15;
     --ink-soft:#5C5A57;
     --primary:var(--lime);
     --primary-deep:var(--ink);
-    --primary-tint:rgba(253,234,4,0.30);
+    --primary-tint:rgba(127,0,255,0.30);
     --secondary:#FBBF24;
     --secondary-deep:#92400E;
     --secondary-tint:#FEF3C7;
@@ -271,7 +272,7 @@
     height:16px;
     left:-2px;
     top:3px;
-    box-shadow:0 0 0 5px rgba(253,234,4,0.55);
+    box-shadow:0 0 0 5px rgba(127,0,255,0.55);
   }
   .timeline-label{
     font-family:'Sora',sans-serif;
@@ -607,7 +608,7 @@
   .social-icon-btn:hover{background:var(--lime); color:var(--ink); border-color:var(--lime);}
   .hero-socials{grid-area:social; margin-top:14px; margin-bottom:6px; display:flex; gap:10px; justify-content:flex-start;}
   .hero-socials .social-icon-btn{
-    border:1px solid rgba(253,234,4,0.45);
+    border:1px solid rgba(127,0,255,0.45);
     background:transparent;
     color:var(--lime);
   }
@@ -693,7 +694,7 @@
   .timeline.js-on .timeline-dot{background:var(--bg); border:2px solid rgba(10,13,21,0.22); transition:background .35s ease, border-color .35s ease, transform .35s ease, box-shadow .35s ease; z-index:1;}
   .timeline.js-on .timeline-item.is-active .timeline-dot{background:var(--lime); border-color:var(--ink); transform:scale(1.2);}
   .timeline.js-on .timeline-dot-current{box-shadow:none;}
-  .timeline.js-on .timeline-item.is-active .timeline-dot-current{box-shadow:0 0 0 6px rgba(253,234,4,0.45);}
+  .timeline.js-on .timeline-item.is-active .timeline-dot-current{box-shadow:0 0 0 6px rgba(127,0,255,0.45);}
   .timeline.js-on .timeline-content{opacity:.3; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease;}
   .timeline.js-on .timeline-item.is-active .timeline-content{opacity:1; transform:none;}
   @media (prefers-reduced-motion: reduce){
@@ -724,6 +725,21 @@
   .inst-logo-opia{height:38px;}
   .inst-org + .inst-date{margin-top:12px;}
   .inst-item{align-items:center;}
+
+  /* ---------- Acento violeta ---------- */
+  .btn-cta{color:#fff;}
+  .btn-contact{border-color:var(--accent-soft);}
+  .btn-contact:hover{background:var(--lime); border-color:var(--lime); color:#fff;}
+  .init-card-dark .init-link:hover, .init-link:hover{color:#fff;}
+  .social-icon-btn:hover, .hero-socials .social-icon-btn:hover{color:#fff;}
+  .modal-close{color:#fff;}
+  .ticker span, .ticker span::after{color:#fff;}
+  .post-link{color:var(--accent-soft);}
+  .value-item .dot{background:var(--accent-soft);}
+  .modal-panel .exp-list li::marker{color:var(--accent-soft);}
+  .hero-title .hl, .footer-headline .hl{color:var(--accent-soft);}
+  .section-head::before{color:var(--lime);}
+  .posts-dark .section-head::before{color:var(--accent-soft);}
 </style>
 </head>
 <body>
