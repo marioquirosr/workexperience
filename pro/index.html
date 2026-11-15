@@ -1076,6 +1076,12 @@
   .footer h2{font-weight:900;}
   .posts-dark .btn,.footer .btn{border-color:#fff; box-shadow:4px 4px 0 #fff;}
   .posts-dark .btn:hover,.footer .btn:hover{box-shadow:6px 6px 0 #fff;}
+
+  /* Lado profesional: recto, simétrico, sin sombras desplazadas */
+  .hero-photo,.hero-photo:hover{transform:none !important; box-shadow:none !important;}
+  .btn,.btn:hover,.hero .btn-contact,.hero .btn-contact:hover,.footer .btn,.footer .btn:hover,.footer .btn-contact,.footer .btn-contact:hover,.posts-dark .btn,.posts-dark .btn:hover{box-shadow:none !important; transform:none !important;}
+  .stat,.stat + .stat,.svc-row,.svc-row:hover,.init-card,.init-card.init-card-dark,.posts-dark .post-card,.xp,.timeline-item-current .timeline-content{box-shadow:none !important; transform:none !important;}
+  .svc-row:hover,.btn:hover{border-color:var(--lime);}
   @media (prefers-reduced-motion:reduce){.btn,.svc-row{transition:none;}}
 </style>
 </head>
