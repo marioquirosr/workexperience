@@ -94,36 +94,27 @@ body{display:flex;flex-direction:column;min-height:100%}
   .cre .pic{top:32px}
   .door h2{font-size:clamp(32px,9.6vw,46px)}
 }
+.door h2.long{font-size:clamp(30px,3.6vw,50px);line-height:1;max-width:11em}
+@media (max-width:760px){.door h2.long{font-size:clamp(24px,7.2vw,34px);max-width:58%}}
 @media (prefers-reduced-motion:reduce){.door,.go{transition:none}}
 </style>
 </head>
 <body>
-<header class="intro">
-  <div class="intro-in">
-    <div class="avatar"><img src="/assets/img/avatar.jpg" alt="Mario Quirós" width="320" height="320"></div>
-    <div>
-      <h1>Mario Quirós R.</h1>
-      <p class="who">Hago que el marketing se convierta en <b>ingresos</b>. Y cuento en Instagram <b>lo que se come y lo que pasa en Panamá</b>.</p>
-      <div class="creds"><span>13 años en marketing</span><span>Samsung, Tafi, Más Móvil</span><span>Ciudad de Panamá</span></div>
-    </div>
-    <p class="ask">¿Qué te trae por aquí?</p>
-  </div>
-</header>
 <main class="split">
+  <a class="door cre" href="/creador/" aria-label="Entrar al lado creador">
+    <figure class="pic"><img src="/assets/img/creador.jpg" alt="Mario Quirós frente a un mural en Wynwood" width="900" height="1125"></figure>
+    <span class="chip">Para marcas</span>
+    <h2 class="long">Estratega creativo / creador</h2>
+    <p><b>Comida, opinión y lifestyle</b> desde Panamá, con ojo de marketero.</p>
+    <div class="tags"><span>Opinión</span><span>Foodie</span><span>Lifestyle</span></div>
+    <span class="go">Entrar →</span>
+  </a>
   <a class="door pro" href="/pro/" aria-label="Entrar al lado profesional">
     <figure class="pic"><img src="/assets/img/hero-800.webp" alt="Mario Quirós dando una charla sobre IA" width="800" height="1000"></figure>
     <span class="chip">Para empresas</span>
     <h2>Profesional</h2>
     <p><b>Estrategia, marketing e IA</b> que se convierte en revenue.</p>
-    <div class="tags"><span>Fractional CMO</span><span>Brand to Revenue</span><span>IA aplicada</span></div>
-    <span class="go">Entrar →</span>
-  </a>
-  <a class="door cre" href="/creador/" aria-label="Entrar al lado creador">
-    <figure class="pic"><img src="/assets/img/creador.jpg" alt="Mario Quirós frente a un mural en Wynwood" width="900" height="1125"></figure>
-    <span class="chip">Para marcas</span>
-    <h2>Creador</h2>
-    <p><b>Comida, opinión y lifestyle</b> desde Panamá, con ojo de marketero.</p>
-    <div class="tags"><span>Opinión</span><span>Foodie</span><span>Lifestyle</span></div>
+    <div class="tags"><span>Head of Marketing and Communications</span><span>Brand to Revenue</span><span>IA aplicada</span></div>
     <span class="go">Entrar →</span>
   </a>
 </main>
