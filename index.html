@@ -103,7 +103,7 @@ body{display:flex;flex-direction:column;min-height:100%}
   .door{display:flex;min-height:max(50svh,460px);flex:none;overflow:hidden}
 }
 @media (min-width:761px){
-  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(200px,1fr) repeat(4,auto);min-height:600px}
+  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(200px,1fr) repeat(5,auto);min-height:600px}
   .door{grid-row:1/-1;display:grid;grid-template-rows:subgrid;grid-template-columns:minmax(0,1fr);row-gap:16px;align-content:stretch;justify-content:stretch;padding:40px clamp(28px,4vw,56px) 44px}
   .door>*{justify-self:start}
   .pic{position:relative;top:auto;right:auto;width:100%;justify-self:stretch;margin-bottom:12px;transform:none}
@@ -112,9 +112,9 @@ body{display:flex;flex-direction:column;min-height:100%}
   .pro .pic{right:auto}
   .pro .pic img{object-position:50% 12%}
   .cre .pic img{object-position:50% 42%}
-  .door h2,.door h2.long{font-size:clamp(36px,min(4.6vw,7.4vh),66px);line-height:.95;max-width:none;align-self:end}
+  .door h2,.door h2.long{font-size:clamp(34px,min(3.9vw,7.4vh),66px);line-height:.95;max-width:none;white-space:nowrap}
   .door p{max-width:26em}
-  .hd{align-self:end;display:flex;flex-direction:column;gap:16px}
+  .door>*:not(.pic){align-self:start}
 }
 @media (prefers-reduced-motion:reduce){.door,.go{transition:none}}
 </style>
@@ -123,14 +123,16 @@ body{display:flex;flex-direction:column;min-height:100%}
 <main class="split">
   <a class="door cre" href="/creador/" aria-label="Entrar al lado creador">
     <figure class="pic"><img src="/assets/img/creador.jpg" alt="Mario Quirós frente a un mural en Wynwood" width="900" height="1125"></figure>
-    <div class="hd"><span class="chip">Para marcas</span><h2 class="long">Estratega creativo / creador</h2></div>
+    <span class="chip">Para marcas</span>
+    <h2 class="long">Creativo y creador</h2>
     <p><b>Comida, opinión y lifestyle</b> desde Panamá, con ojo de marketero.</p>
     <div class="tags"><span>Opinión</span><span>Foodie</span><span>Lifestyle</span></div>
     <span class="go">Entrar →</span>
   </a>
   <a class="door pro" href="/pro/" aria-label="Entrar al lado profesional">
     <figure class="pic"><img src="/assets/img/hero-800.webp" alt="Mario Quirós dando una charla sobre IA" width="800" height="1000"></figure>
-    <div class="hd"><span class="chip">Para empresas</span><h2>Profesional</h2></div>
+    <span class="chip">Para empresas</span>
+    <h2>Profesional</h2>
     <p><b>Estrategia, marketing e IA</b> que se convierte en revenue.</p>
     <div class="tags"><span>Head of Marketing and Communications</span><span>Brand to Revenue</span><span>IA aplicada</span></div>
     <span class="go">Entrar →</span>
