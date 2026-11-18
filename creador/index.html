@@ -39,6 +39,10 @@ svg.ic{display:block;flex-shrink:0}
 .hero{background:var(--navy);color:var(--paper);border-bottom:3px solid var(--ink);position:relative;overflow:hidden}
 .hero .wrap{padding-top:24px;padding-bottom:64px;position:relative}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.topr{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+.chip-link{background:var(--yellow);text-decoration:none;transition:transform .15s ease}
+.chip-link:hover{transform:translate(-1px,-1px)}
+@media (max-width:860px){.topr{justify-content:flex-start;width:100%}}
 .stamp{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .upd{font-size:13px;font-weight:700;color:var(--paper);opacity:.85}
 .hgrid{display:grid;grid-template-columns:1.1fr .9fr;grid-template-areas:"txt photo" "st photo";column-gap:48px;align-items:center;margin-top:40px}
@@ -210,7 +214,7 @@ footer{padding:36px 0 56px;font-size:13px;font-weight:700;opacity:.7;max-width:6
 
 <header class="hero">
   <div class="wrap">
-    <div class="top"><div class="stamp"><span class="chip">Media kit 2026</span><span class="upd">Actualizado: 18 nov 2026 · 7:53 a. m. (Panamá)</span></div><span class="chip">Ciudad de Panamá</span></div>
+    <div class="top"><div class="stamp"><span class="chip">Media kit 2026</span><span class="upd">Actualizado: 18 nov 2026 · 7:53 a. m. (Panamá)</span></div><div class="topr"><span class="chip">Ciudad de Panamá</span><a class="chip chip-link" href="/pro/">Lado profesional ↗</a></div></div>
     <div class="hgrid">
       <div class="htxt">
         <h1>Mario Quirós</h1>
