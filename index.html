@@ -96,6 +96,12 @@ body{display:flex;flex-direction:column;min-height:100%}
 }
 .door h2.long{font-size:clamp(30px,3.6vw,50px);line-height:1;max-width:11em}
 @media (max-width:760px){.door h2.long{font-size:clamp(24px,7.2vw,34px);max-width:58%}}
+@media (max-width:760px){
+  html,body{height:auto}
+  body{display:block}
+  .split{display:block;min-height:0;flex:none}
+  .door{display:flex;min-height:max(50svh,460px);flex:none;overflow:hidden}
+}
 @media (prefers-reduced-motion:reduce){.door,.go{transition:none}}
 </style>
 </head>
