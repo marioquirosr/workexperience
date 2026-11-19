@@ -779,6 +779,7 @@
   .gal-card{margin:0;}
   .gal-card:hover{transform:none;}
   .gal-media{aspect-ratio:1/1;}
+  .post-media.fit{aspect-ratio:1200/773;}
   .gal-media img{transition:transform .5s ease;}
   .gal-card:hover .gal-media img{transform:scale(1.04);}
   .gal-card .post-desc{-webkit-line-clamp:unset; display:block; overflow:visible;}
@@ -1271,7 +1272,15 @@
       <button class="tab" role="tab" aria-selected="false" aria-controls="panel-ia" id="tab-ia">IA</button>
     </div>
     <div class="tab-panel" id="panel-mkt" role="tabpanel" aria-labelledby="tab-mkt">
-    <div class="post-grid" id="substack-posts">
+    <div class="post-grid gal-grid" id="substack-posts">
+      <figure class="post-card gal-card">
+        <div class="post-media fit"><img src="/assets/img/charla-usma.webp" width="1200" height="773" decoding="async" alt="Mario Quirós con estudiantes de la Facultad de Negocios de la USMA después de su charla sobre marketing e IA" loading="lazy"></div>
+        <figcaption class="post-body">
+          <div class="post-date">Universidad</div>
+          <h3 class="post-title">Marketing e IA en la USMA</h3>
+          <p class="post-desc">Charla con estudiantes de la Facultad de Negocios sobre cómo la IA ya cambia cada paso de una estrategia, de la investigación a la medición. La IA se queda con lo operativo; nosotros, con el cliente.</p>
+        </figcaption>
+      </figure>
       <a class="post-card" href="https://marioquiros.substack.com/p/cac-payback" target="_blank" rel="noopener">
         <div class="post-media"><img src="https://substack-post-media.s3.amazonaws.com/public/images/8226dc38-e6fb-4a18-96d3-4631e783c12f_1200x630.png" alt="" loading="lazy" onerror="this.remove()"></div>
         <div class="post-body">
@@ -1580,7 +1589,8 @@
     if(!j||j.status!=='ok'||!j.items||!j.items.length) return;
     var frag=document.createDocumentFragment();
     j.items.slice(0,3).forEach(function(it){frag.appendChild(card(it));});
-    grid.innerHTML=''; grid.appendChild(frag);
+    Array.prototype.forEach.call(grid.querySelectorAll('a.post-card'),function(el){el.remove();});
+    grid.appendChild(frag);
   }).catch(function(){ /* se queda el respaldo */ });
 })();
 </script>
