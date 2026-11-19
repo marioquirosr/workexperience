@@ -42,6 +42,11 @@ svg.ic{display:block;flex-shrink:0}
 .topr{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
 .chip-link{background:var(--yellow);text-decoration:none;transition:transform .15s ease}
 .chip-link:hover{transform:translate(-1px,-1px)}
+.switch-float{position:fixed;top:16px;right:16px;z-index:50;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:3px solid var(--ink);border-radius:99px;background:var(--yellow);color:var(--ink);font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:4px 4px 0 var(--ink);opacity:0;transform:translateY(-12px);pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+.switch-float.show{opacity:1;transform:none;pointer-events:auto}
+.switch-float:hover{transform:translate(-1px,-1px)}
+@media (prefers-reduced-motion:reduce){.switch-float{transition:none}}
+
 @media (max-width:860px){.topr{justify-content:flex-start;width:100%}}
 .stamp{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .upd{font-size:13px;font-weight:700;color:var(--paper);opacity:.85}
@@ -401,6 +406,12 @@ footer{padding:36px 0 56px;font-size:13px;font-weight:700;opacity:.7;max-width:6
     });
   });
 })();
+</script>
+<a class="switch-float" id="switch-float" href="/pro/" aria-hidden="true" tabindex="-1">Lado profesional ↗</a>
+<script>
+(function(){var f=document.getElementById('switch-float'),t=document.querySelector('.chip-link');
+if(!f||!t||!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(e){var show=!e[0].isIntersecting;f.classList.toggle('show',show);f.setAttribute('aria-hidden',!show);f.tabIndex=show?0:-1;}).observe(t);})();
 </script>
 </body>
 </html>
