@@ -9,12 +9,12 @@
 <meta property="og:description" content="Elige: el lado profesional o el lado creador.">
 <meta property="og:image" content="https://marioquiros.vercel.app/assets/img/og-image.jpg">
 <meta property="og:url" content="https://marioquiros.vercel.app/">
-<meta name="theme-color" content="#0F2240">
+<meta name="theme-color" content="#16151A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=DM+Sans:opsz,wght@9..40,200;9..40,400;9..40,700&display=swap" rel="stylesheet">
 <style>
-/* Portada dividida: dos puertas del mismo lenguaje. Izquierda profesional (azul noche + violeta), derecha creador (paleta del mural). */
+/* Portada dividida: dos puertas. Profesional con la línea gráfica 2026 del lado pro (DM Sans, tinta, índigo, lima neón, fucsia); creador con la paleta del mural. */
 :root{
   --ink:#0B1426;
   --paper:#F3F2EE;
@@ -121,6 +121,22 @@ body{display:flex;flex-direction:column;min-height:100%}
   .door>*:not(.pic){align-self:start}
 }
 @media (prefers-reduced-motion:reduce){.door,.go{transition:none}}
+/* ===== Puerta profesional: línea gráfica 2026 (igual que /pro/) ===== */
+.pro{--pro-ink:#16151A;--pro-paper:#FAFAF7;--pro-indigo:#5D00FF;--pro-neon:#CFFF04;--pro-fuchsia:#FF2E9A;
+  background:var(--pro-ink);color:var(--pro-paper);font-family:'DM Sans',system-ui,sans-serif}
+.pro::before{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-160px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(93,0,255,.35),rgba(93,0,255,0) 70%);pointer-events:none}
+.pro .pic{border:none;border-radius:28px;box-shadow:none}
+.pro .chip{background:var(--pro-neon);color:var(--pro-ink);border:none;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:.18em}
+.pro h2{font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:-.03em}
+.pro p{font-family:'DM Sans',sans-serif;font-weight:200;color:#D9D7DF}
+.pro p b{font-weight:700;color:var(--pro-paper)}
+.pro .tags span{font-family:'DM Sans',sans-serif;font-weight:700;border:2px solid rgba(250,250,247,.28);color:var(--pro-paper)}
+.pro .go{background:var(--pro-neon);color:var(--pro-ink);border:none;font-family:'DM Sans',sans-serif;font-weight:700;box-shadow:none}
+.pro:hover .go{background:var(--pro-paper)}
+.door + .door{border-left-color:#16151A}
+@media (max-width:760px){.door + .door{border-top-color:#16151A}}
+
 </style>
 </head>
 <body>
@@ -138,7 +154,7 @@ body{display:flex;flex-direction:column;min-height:100%}
     <span class="chip">Para empresas</span>
     <h2>Profesional</h2>
     <p><b>Estrategia, marketing e IA</b> que se convierte en revenue.</p>
-    <div class="tags"><span>Head of Marketing and Communications</span><span>Brand to Revenue</span><span>IA aplicada</span></div>
+    <div class="tags"><span>Head of Marketing</span><span>Fractional CMO</span><span>IA aplicada</span></div>
     <span class="go">Entrar →</span>
   </a>
 </main>
