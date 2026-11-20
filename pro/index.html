@@ -1092,6 +1092,18 @@
   /* recto, simétrico, sin sombras */
   .hero-photo,.btn,.stat,.svc-row,.init-card,.post-card,.xp,.timeline-content{box-shadow:none !important; transform:none !important;}
   @media (prefers-reduced-motion:reduce){.btn,.svc-row{transition:none;}}
+
+  /* Fix: sin línea suelta sobre la experiencia */
+  .xp-list-wrap{border-top:0;}
+  /* Fix: botón Lado creador visible en móvil y tablet */
+  @media (max-width:1000px){
+    .topnav-links{display:flex; gap:0;}
+    .topnav-links a:not(.nav-switch){display:none;}
+    .topnav-links a.nav-switch{padding:7px 12px; font-size:12.5px; white-space:nowrap;}
+  }
+  @media (max-width:420px){
+    .bm-name{display:none;}
+  }
 </style>
 </head>
 <body>
@@ -1685,7 +1697,7 @@
   var nav=document.getElementById('topnav'); if(!nav) return;
   var hero=document.querySelector('.hero');
   var darks=[].slice.call(document.querySelectorAll('.hero,.posts-dark,.footer'));
-  var links=[].slice.call(nav.querySelectorAll('.topnav-links a'));
+  var links=[].slice.call(nav.querySelectorAll('.topnav-links a[href^="#"]'));
   var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
   function upd(){
     var y=window.scrollY, probe=nav.offsetHeight/2;
